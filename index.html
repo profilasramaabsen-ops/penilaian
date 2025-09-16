@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+
+  <style>
+    
+  </style>
+
+  
+</head>
+<body>
+  <input type="file" id="fileInput">
+<script type="module">
+  import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js";
+
+  // inisialisasi Firebase dulu...
+  const storage = getStorage();
+  const fileInput = document.getElementById("fileInput");
+
+  fileInput.addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    const storageRef = ref(storage, "uploads/" + file.name);
+    await uploadBytes(storageRef, file);
+    alert("File tersimpan di online storage!");
+  });
+</script>
+
+
+  <script>
+    
+  </script>
+</body>
+</html>
